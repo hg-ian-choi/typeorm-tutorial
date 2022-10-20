@@ -53,9 +53,7 @@ AppDataSource.initialize()
     const savedPhotos2 = await photoRepository.find();
     console.log('All photos from the db: ', savedPhotos2);
 
-    const firstPhoto = await photoRepository.findOneBy({
-      id: 1,
-    });
+    const firstPhoto = await photoRepository.findOneBy({ id: 1 });
     console.log('First photo from the db: ', firstPhoto);
 
     const meAndBearsPhoto = await photoRepository.findOneBy({
@@ -74,5 +72,10 @@ AppDataSource.initialize()
     const [photos, photosCount] = await photoRepository.findAndCount();
     console.log('All photos: ', photos);
     console.log('Photos count: ', photosCount);
+
+    // Updating in the database
+    const photoToUpdate = await photoRepository.findOneBy({ id: 1 });
+    photoToUpdate.name = 'Me, my friends and polar bears';
+    await photoRepository.save(photoToUpdate);
   })
   .catch((error) => console.log(error));
