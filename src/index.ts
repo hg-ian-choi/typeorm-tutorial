@@ -77,5 +77,9 @@ AppDataSource.initialize()
     const photoToUpdate = await photoRepository.findOneBy({ id: 1 });
     photoToUpdate.name = 'Me, my friends and polar bears';
     await photoRepository.save(photoToUpdate);
+
+    // Removing from the database
+    const photoToRemove = await photoRepository.findOneBy({ id: 1 });
+    await photoRepository.remove(photoToRemove);
   })
   .catch((error) => console.log(error));
