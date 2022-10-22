@@ -10,13 +10,13 @@ export class Photo {
   })
   name: string;
 
-  @Column('text')
+  @Column('varchar')
   description: string;
 
   @Column()
   filename: string;
 
-  @Column('double')
+  @Column('float')
   views: number;
 
   @Column()
